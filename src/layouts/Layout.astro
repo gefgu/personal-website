@@ -4,6 +4,7 @@ export interface Props {
 }
 
 const { frontmatter, title } = Astro.props;
+const { pathname } = Astro.url;
 
 import "@fontsource/metropolis";
 ---
@@ -23,19 +24,25 @@ import "@fontsource/metropolis";
       <navbar>
         <ul class="flex gap-2">
           <li
-            class="px-4 py-2 h-full hover:bg-gray-100 rounded-md cursor-pointer font-semibold tracking-wide"
+            class={` h-full hover:bg-gray-100 rounded-md cursor-pointer font-semibold tracking-wide ${
+              pathname === "/" && "bg-gray-100"
+            }`}
           >
-            Home
+            <a href="/" class="px-4 py-2 block"> Home</a>
           </li>
           <li
-            class="px-4 py-2 h-full hover:bg-gray-100 rounded-md cursor-pointer font-semibold tracking-wide"
+            class={` h-full hover:bg-gray-100 rounded-md cursor-pointer font-semibold tracking-wide ${
+              pathname.startsWith("/blog") && "bg-gray-100"
+            }`}
           >
-            Blog
+            <a href="/blog" class="px-4 py-2 block"> Blog</a>
           </li>
           <li
-            class="px-4 py-2 h-full hover:bg-gray-100 rounded-md cursor-pointer font-semibold tracking-wide"
+            class={` h-full hover:bg-gray-100 rounded-md cursor-pointer font-semibold tracking-wide ${
+              pathname === "/work" && "bg-gray-100"
+            }`}
           >
-            Work
+            <a href="/work" class="px-4 py-2 block"> Work</a>
           </li>
         </ul>
       </navbar>
