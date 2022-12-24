@@ -4,6 +4,8 @@ export interface Props {
 }
 
 const { frontmatter, title } = Astro.props;
+
+import "@fontsource/metropolis";
 ---
 
 <!DOCTYPE html>
@@ -17,12 +19,24 @@ const { frontmatter, title } = Astro.props;
   </head>
   <body>
     <header class="flex justify-between max-w-screen-lg mx-auto p-4 mt-4">
-      <h1 class="text-3xl">Gustavo Santos</h1>
+      <h1 class="text-4xl">Gustavo Santos</h1>
       <navbar>
         <ul class="flex gap-2">
-          <li class="px-4 py-2 h-full hover:bg-gray-100 rounded-md cursor-pointer">Home</li>
-          <li class="px-4 py-2 h-full hover:bg-gray-100 rounded-md cursor-pointer">Blog</li>
-          <li class="px-4 py-2 h-full hover:bg-gray-100 rounded-md cursor-pointer">Work</li>
+          <li
+            class="px-4 py-2 h-full hover:bg-gray-100 rounded-md cursor-pointer font-semibold tracking-wide"
+          >
+            Home
+          </li>
+          <li
+            class="px-4 py-2 h-full hover:bg-gray-100 rounded-md cursor-pointer font-semibold tracking-wide"
+          >
+            Blog
+          </li>
+          <li
+            class="px-4 py-2 h-full hover:bg-gray-100 rounded-md cursor-pointer font-semibold tracking-wide"
+          >
+            Work
+          </li>
         </ul>
       </navbar>
     </header>
