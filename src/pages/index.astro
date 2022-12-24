@@ -1,5 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const posts = await Astro.glob("./blog/*.mdx");
+const nonDraftPosts = posts.filter((post) => !post.frontmatter.draft);
 ---
 
 <Layout title="Gustavo Santos">
@@ -29,6 +32,26 @@ import Layout from "../layouts/Layout.astro";
           </svg>
         </div>
       </a>
+    </div>
+  </section>
+  <section class="mt-8">
+    <h3 class="font-black text-4xl tracking-wide">Latest Posts</h3>
+    <div class="mt-6 grid gap-4">
+      {
+        nonDraftPosts.map((post) => (
+          <section>
+            <h4 class="font-semibold text-2xl">
+              <a href={post.url}>{post.frontmatter.title}</a>
+            </h4>
+            <p class="font-light text-gray-600 text-sm">
+              {post.frontmatter.date}
+            </p>
+            <p class="text-gray-800 tracking-wide">
+              {post.frontmatter.description}
+            </p>
+          </section>
+        ))
+      }
     </div>
   </section>
 </Layout>
